@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {getMovies} from "../services/fakeMovieService";
+import {Link} from "react-router-dom";
 // import {getMovie} from "../services/fakeMovieService";
 import {deleteMovie} from "../services/fakeMovieService";
 
@@ -9,11 +10,11 @@ class App extends Component {
     movies: getMovies(),
   };
 
-  handleDelete = (movie) => {
+  handleDelete = movie => {
     console.log("movie = ", movie.title);
     //Update (overwrite)  virtual DOM state with a new array minus that movie
     //Make a whole new Movies array with the deleted movie removed
-    const movies = this.state.movies.filter((m) => m._id !== movie._id);
+    const movies = this.state.movies.filter(m => m._id !== movie._id);
     // Update state
     this.setState({movies: movies});
   };
@@ -54,9 +55,11 @@ class App extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.movies.map((movie) => (
+            {this.state.movies.map(movie => (
               <tr key={movie._id}>
-                <td>{movie.title}</td>
+                <td>
+                  <Link to={`/movies/${movie._id}`}>{movie.title}</Link>
+                </td>
                 <td>{movie.genre.name}</td>
                 <td>{movie.numberInStock}</td>
                 <td>{movie.dailyRentalRate}</td>

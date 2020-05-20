@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {getMovies} from "../services/fakeMovieService";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 class NavBar extends Component {
   state = {};
@@ -9,20 +9,20 @@ class NavBar extends Component {
     return (
       <>
         {/* {this.renderMovieCount()} */}
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="/#">
+        <nav className="navbar navbar-nav navbar-expand-lg ">
+          <NavLink className="navbar-brand" to="/#">
             Vidly
-          </a>
+          </NavLink>
 
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <Link to="./movies">Movies</Link>
+            <li className="nav-item nav-link active m-2">
+              <NavLink to="./movies">Movies</NavLink>
             </li>
-            <li className="">
-              <Link to="./customers">Customers</Link>
+            <li className="nav-item nav-link  m-2">
+              <NavLink to="./customers">Customers</NavLink>
             </li>
-            <li className="">
-              <Link to="./rentals">Rentals</Link>
+            <li className="nav-item nav-link  m-2">
+              <NavLink to="./rentals">Rentals</NavLink>
             </li>
           </ul>
         </nav>
